@@ -61,7 +61,7 @@ import StoreService from "@/services/store.service";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user.store";
-import { Notify } from "quasar";
+// import { Notify } from "quasar";
 import type { StoreItem } from "@/services/models/store.models";
 
 const props = defineProps({
@@ -147,30 +147,30 @@ function purchaseItem() {
 }
 
 function purchaseItemSuccess() {
-  Notify.create({
-    message: "Item Successfully Purchased!",
-    color: "green",
-    icon: "bi-check-circle-fill",
-    position: "top",
-    actions: [
-      {
-        label: "Dismiss",
-        color: "white",
-        handler: () => {
-          /* ... */
-        },
-      },
-    ],
-  });
+  // Notify.create({
+  //   message: "Item Successfully Purchased!",
+  //   color: "green",
+  //   icon: "bi-check-circle-fill",
+  //   position: "top",
+  //   actions: [
+  //     {
+  //       label: "Dismiss",
+  //       color: "white",
+  //       handler: () => {
+  //         /* ... */
+  //       },
+  //     },
+  //   ],
+  // });
 }
 
 function purchaseItemFailed(error_msg?: any) {
-  Notify.create({
-    message: error_msg ? error_msg : "Something went wrong. Please try again.",
-    color: "red",
-    icon: "bi-exclamation-circle-fill",
-    position: "top",
-    actions: [{ label: "Dismiss", color: "white", handler: () => {} }],
-  });
+  // Notify.create({
+  //   message: error_msg ? error_msg : "Something went wrong. Please try again.",
+  //   color: "red",
+  //   icon: "bi-exclamation-circle-fill",
+  //   position: "top",
+  //   actions: [{ label: "Dismiss", color: "white", handler: () => {} }],
+  // });
 }
 </script>

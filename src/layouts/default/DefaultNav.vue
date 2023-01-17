@@ -12,21 +12,23 @@
 
 .section-heading {
   font-weight: 500;
-  //font-size: 14px;
   line-height: 21px;
 }
 
 div.q-item {
   font-weight: 500;
-  // font-size: 12px;
   line-height: 18px;
 }
 
 i.q-icon {
   font-weight: 500;
   color: #fdb417;
-  //  font-size: 12px !important;
-  // line-height: 18px;
+}
+
+.bell-icon {
+  background-color: white;
+  color: #fdb417 !important;
+  cursor: pointer;
 }
 
 .profile-link {
@@ -43,22 +45,19 @@ a {
 </style>
 
 <template>
-  <q-header class="bg-white text-primary">
-    <div class="header">
-      <div class="zlto-balance" v-if="hasWallet">Z {{ balance }}</div>
+  <div class="header">
+    <div class="zlto-balance" v-if="hasWallet">Z {{ balance }}</div>
+    <div><img src="src/assets/logo.png" /></div>
 
-      <div><img src="src/assets/logo.png" /></div>
-
-      <div>
-        <q-icon
-          size="sm"
-          style="cursor: pointer"
-          @click="goToNotifications()"
-          name="bi-bell"
-        />
-      </div>
+    <div>
+      <LvButton
+      size="lg"
+        class="bell-icon"
+        @click="goToNotifications()"
+        icon="bi-bell"
+      />
     </div>
-  </q-header>
+  </div>
 </template>
 
 <script lang="ts" setup>

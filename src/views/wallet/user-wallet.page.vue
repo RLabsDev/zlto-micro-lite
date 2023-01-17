@@ -10,6 +10,7 @@
 .spent-card {
   background-color: red;
 }
+
 </style>
 <template>
   <bread-crumb @click="goBack()" backTo="Wallet" />
@@ -33,35 +34,26 @@
         </q-card>
     </div> -->
   <div class="row">
-    <q-card class="my-card">
-      <q-card-section>
-        <div class="row items-center no-wrap">
-          <div class="col-auto">
-            <q-avatar
-              icon="bi-ticket-perforated"
-              style="
-                margin-right: 15px;
-                background-color: #fee9b9;
-                color: #fdb417;
-              "
-            ></q-avatar>
-          </div>
-          <div class="col">
-            <div class="text-h6">My Vouchers</div>
-            <div class="text-subtitle2">View your vouchers</div>
-          </div>
-          <div class="col-auto">
-            <q-btn
-              color="grey-7"
-              round
-              flat
-              icon="bi-chevron-right"
-              @click="goToMyVouchers()"
-            ></q-btn>
-          </div>
+    <LvCard
+      @click="goToMyVouchers()"
+      :shadowStyle="1"
+      padding="20px"
+      borderRadius="4px"
+      class="task-card"
+    >
+      <div class="row items-center no-wrap">
+        <div class="col-auto">
+          <LvButton class="task-icon" icon="bi-ticket-perforated"></LvButton>
         </div>
-      </q-card-section>
-    </q-card>
+        <div class="col">
+          <div class="text-h6">My Vouchers</div>
+          <div class="text-subtitle2">View your vouchers</div> 
+        </div>
+        <div class="col-auto">
+          <LvButton color="white" class="chevron-icon--white" round flat icon="bi-chevron-right"  @click="goToMyVouchers()"></LvButton>
+        </div>
+      </div>
+    </LvCard>
   </div>
 </template>
 <script setup lang="ts">

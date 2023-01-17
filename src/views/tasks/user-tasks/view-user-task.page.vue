@@ -2,26 +2,33 @@
 
 </style>
 <template>
-  <div class="row">
+  <!-- <div class="row">
     <q-banner inline-actions rounded style="width: 100%;" class="bg-grey-3">
       <template v-slot:avatar>
         <q-icon @click="goBack()" name="bi-chevron-left" />
       </template>
       <h6 style=" text-align: center;">{{ taskTransactionData?.task_info?.task_name }}</h6>
     </q-banner>
-  </div>
+  </div> -->
+
+  <bread-crumb
+    @click="goBack()"
+    :backTo="`Tasks`"
+  />
   <br>
   <div class="row">
-    <q-card class="my-card" flat bordered>
-      <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-        <div class="absolute-bottom">
-          <div class="text-h6">{{ taskTransactionData?.task_name }}</div>
-          <div class="text-subtitle2">{{ taskTransactionData?.task_info?.task_category.name }}</div>
-          <div class="text-subtitle2">{{ taskTransactionData?.task_info?.task_zlto }}</div>
-        </div>
-      </q-img>
+    <LvCard
+      :shadowStyle="1"
+      padding="20px"
+      borderRadius="4px"
+      class="card-item"
+    >
+      <div class="content">
+      <div class="text-h6">{{ taskTransactionData?.task_name }}</div>
+      <div class="text-subtitle2">{{ taskTransactionData?.task_info?.task_category.name }}</div>
+      <div class="text-subtitle2">{{ taskTransactionData?.task_info?.task_zlto }}</div>
 
-      <q-card-section>
+      <div class="row">
         <div class="text-h7 q-mt-sm q-mb-xs">Why this task?</div>
         <div class="text-caption text-grey">
           {{ taskTransactionData?.task_info?.task_description }}
@@ -34,35 +41,45 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua.
         </div>
-      </q-card-section>
-      <q-card-section v-if="(taskTransactionResourceData?.data.length > 0)">
-        <!-- <q-chip v-for="(resource, index) in taskTransactionResourceData.data" :key="index"  clickable @click="" color="orange" text-color="white" icon="directions">
-          {{resource.resource_name}}
-          </q-chip> -->
-        <div v-if="taskTransactionResourceData?.data" class="row text-h7 q-mt-sm q-mb-xs">Photos of the task you
-          completed:</div>
-        <div class="row">
-          <div class="col" v-for="(resource, index) in taskTransactionResourceData.data" :key="index">
-            <q-img v-if="resource.resource_link !== 'None'" :src="resource.resource_link" spinner-color="white"
-              style="height: 100px; max-width: 100px; margin:5px" />
+      </div>
+       
+        <div class="row" v-if="(taskTransactionResourceData?.data.length > 0)" >
+          <div v-if="taskTransactionResourceData?.data" class="row text-h7 q-mt-sm q-mb-xs">Photos of the task you
+            completed:</div>
+          <div class="row">
+            <div class="col" v-for="(resource, index) in taskTransactionResourceData.data" :key="index">
+              <img v-if="resource.resource_link !== 'None'" :src="resource.resource_link" spinner-color="white"
+                style="height: 100px; max-width: 100px; margin:5px" />
+            </div>
           </div>
         </div>
-      </q-card-section>
-      <q-card-section v-if="taskTransactionData?.transaction_status !== 2">
-        <div class="text-h7 q-mt-sm q-mb-xs">Upload Proof</div>
-        <q-uploader :factory="TaskUploadFile" batch auto-upload style="width: 100%;" color="dark" />
-      </q-card-section>
-      <q-card-actions v-if="taskTransactionData?.transaction_status !== 2">
-        <q-btn unelevated color="primary" class="full-width" label="Complete Task" @click="completeTask()" />
-      </q-card-actions>
-    </q-card>
+        <div class="row">
+          <lv-button
+            v-if="taskTransactionData?.transaction_status !== 2"
+            class="full-width"
+            label="Upload Proof"
+            type="button"
+            :factory="TaskUploadFile"
+          />
+        </div>
+        <div class="row">
+          <lv-button
+            v-if="taskTransactionData?.transaction_status !== 2"
+            class="full-width"
+            label="Complete Task"
+            type="button"
+            @click="completeTask()"
+          />
+        </div>
+      </div>
+    </LvCard>
   </div>
 </template>
 <script setup lang="ts">
 import type { getTaskTransactionsResponse, Task } from "@/services/models/task.models";
 import TaskService from "@/services/task.service";
 import { useUserStore } from "@/stores/user.store";
-import { Notify } from "quasar";
+// import { Notify } from "quasar";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
@@ -175,15 +192,15 @@ function completeTask() {
 
 function completeTransactionFailed(error_msg?: any) {
 
-  Notify.create({
-    message: error_msg ? error_msg : 'Something went wrong. Please try again.',
-    color: 'red',
-    icon: 'bi-exclamation-circle-fill',
-    position: 'top',
-    actions: [
-      { label: 'Dismiss', color: 'white', handler: () => { } }
-    ]
-  })
+  // Notify.create({
+  //   message: error_msg ? error_msg : 'Something went wrong. Please try again.',
+  //   color: 'red',
+  //   icon: 'bi-exclamation-circle-fill',
+  //   position: 'top',
+  //   actions: [
+  //     { label: 'Dismiss', color: 'white', handler: () => { } }
+  //   ]
+  // })
 }
 
 </script>

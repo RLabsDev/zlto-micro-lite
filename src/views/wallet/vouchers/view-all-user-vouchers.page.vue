@@ -26,14 +26,14 @@
       <div class="row">
         <div class="col-12" v-for="voucher in vouchers" :key="voucher.voucher_id">
           <CardItem
-          v-if="voucher.voucher_state === 'new'"
-          :key="`Card_item_${voucher.voucher_name}`"
-          image="https://cdn.quasar.dev/img/parallax2.jpg"
-          :title="voucher.voucher_name"
-          :description="voucher.voucher_code"
-          :caption="`Z${voucher.date_created}`"
-          @click="viewVoucher(voucher.voucher_id)"
-        />
+            v-if="voucher.voucher_state === 'new'"
+            :key="`Card_item_${voucher.voucher_name}`"
+            image="https://cdn.quasar.dev/img/parallax2.jpg"
+            :title="voucher.voucher_name"
+            :description="voucher.voucher_code"
+            :caption="`Z${voucher.date_created}`"
+            @click="viewVoucher(voucher.voucher_id)"
+          />
         </div>
    
       </div>
@@ -50,14 +50,14 @@
       <div class="row">
         <div class="col-12" v-for="voucher in vouchers" :key="voucher.voucher_id">
           <CardItem
-          v-if="voucher.voucher_state === 'viewed'"
-          :key="`Card_item_${voucher.voucher_name}`"
-          image="https://cdn.quasar.dev/img/parallax2.jpg"
-          :title="voucher.voucher_name"
-          :description="voucher.voucher_code"
-          :caption="`Z${voucher.date_created}`"
-          @click="viewVoucher(voucher.voucher_id)"
-        />
+            v-if="voucher.voucher_state === 'viewed'"
+            :key="`Card_item_${voucher.voucher_name}`"
+            image="https://cdn.quasar.dev/img/parallax2.jpg"
+            :title="voucher.voucher_name"
+            :description="voucher.voucher_code"
+            :caption="`Z${voucher.date_created}`"
+            @click="viewVoucher(voucher.voucher_id)"
+          />
         </div>
       </div>
       <div class="row">

@@ -37,6 +37,8 @@ async createMemberAccount(
 }
 
 async loginMemberAccount(loginParams: MemberLogin): Promise<LoginResponse> {
+  console.log('@@@@@  ~ file: account.service.ts:40 ~ MemberAccountService ~ loginMemberAccount ~ loginParams', loginParams)
+
   return http.post("/account_login", loginParams);
 }
 

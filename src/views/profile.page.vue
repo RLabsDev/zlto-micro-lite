@@ -12,63 +12,10 @@
 }
 </style>
 <template>
-  <q-dialog v-model="uploadImage">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
-        <h6 style="text-align: center">Upload Profile Avatar</h6>
-        <q-space />
-        <q-btn icon="close" flat round dense v-close-popup />
-      </q-card-section>
-
-      <q-card-section>
-        <q-uploader
-          :factory="updateMemberAvatar"
-          batch
-          auto-upload
-          style="width: 100%"
-          color="dark"
-          accept=".jpg, image/*"
-        />
-      </q-card-section>
-    </q-card>
-  </q-dialog>
-
   <bread-crumb @click="goBack()" backTo="Profile" />
 
-  <q-form @submit="onSubmit" class="q-gutter-xs">
-    <!-- <q-file outlined v-model="fileUpload" label="Outlined" />
-    <div class="row">
-      <q-avatar>
-      <img src="https://cdn.quasar.dev/img/avatar.png">
-    </q-avatar>
-    </div> -->
+  <form class="q-gutter-xs">
     <div class="row justify-center">
-      <div class="col-12 text-center self-center q-pa-md q-gutter-sm">
-        <q-avatar
-          v-if="profileDetailsForm.avatar"
-          size="100px"
-          class="q-mb-sm"
-          color="primary"
-          text-color="white"
-        >
-          <img :src="profileDetailsForm.avatar" />
-        </q-avatar>
-        <q-avatar
-          v-if="!profileDetailsForm.avatar"
-          size="100px"
-          class="q-mb-sm"
-          color="primary"
-          text-color="white"
-        >
-          {{ letter }}
-        </q-avatar>
-        <q-btn
-          push
-          color="teal"
-          label="Update Avatar"
-          @click="uploadImage = true"
-        />
-      </div>
       <div class="col-12"></div>
     </div>
     <div class="row">
@@ -78,14 +25,17 @@
     </div>
     <div class="row">
       <div class="form-element col-12">
-        <q-input v-model="profileDetailsForm.bio" outlined type="textarea" />
+        <lv-textarea
+          v-model="profileDetailsForm.bio"
+          :bottom-bar="true"
+          :rows="3"
+          placeholder="Bio"
+          placeholder-color="rgba(0, 0, 0, 0.3)"
+          icon-left="light-icon-user"
+        />
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <p class="label"></p>
-      </div>
-    </div>
+
     <div class="row">
       <div class="col-6">
         <p class="label">Name</p>
@@ -94,30 +44,25 @@
         <p class="label">Surname</p>
       </div>
     </div>
+
     <div class="row">
       <div class="form-element col-6">
-        <q-input
-          outlined
+        <lv-input
           v-model="profileDetailsForm.name"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        >
-          <template v-slot:prepend>
-            <q-icon name="bi-person" />
-          </template>
-        </q-input>
+          :bottom-bar="true"
+          placeholder="Name"
+          placeholder-color="rgba(0, 0, 0, 0.3)"
+          icon-left="bi-person"
+        />
       </div>
       <div class="form-element col-6">
-        <q-input
-          outlined
+        <lv-input
           v-model="profileDetailsForm.surname"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        >
-          <template v-slot:prepend>
-            <q-icon name="bi-person" />
-          </template>
-        </q-input>
+          :bottom-bar="true"
+          placeholder="Name"
+          placeholder-color="rgba(0, 0, 0, 0.3)"
+          icon-left="bi-person"
+        />
       </div>
     </div>
     <div class="row">
@@ -127,17 +72,14 @@
     </div>
     <div class="row">
       <div class="form-element col-12">
-        <q-input
-          outlined
+        <lv-input
           v-model="profileDetailsForm.username"
-          lazy-rules
+          :bottom-bar="true"
           :readonly="true"
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        >
-          <template v-slot:prepend>
-            <q-icon name="bi-person" />
-          </template>
-        </q-input>
+          placeholder="Username"
+          placeholder-color="rgba(0, 0, 0, 0.3)"
+          icon-left="bi-person"
+        />
       </div>
     </div>
     <div class="row">
@@ -147,13 +89,13 @@
     </div>
     <div class="row">
       <div class="form-element col-12">
-        <q-input
-          outlined
+        <lv-input
           v-model="profileDetailsForm.cell_number"
-          label="Cell Number *"
-          lazy-rules
+          :bottom-bar="true"
+          placeholder="Cell Number"
+          placeholder-color="rgba(0, 0, 0, 0.3)"
+          icon-left="bi-phone"
           mask="###########"
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
       </div>
     </div>
@@ -164,12 +106,12 @@
     </div>
     <div class="row">
       <div class="form-element col-12">
-        <q-input
-          outlined
+        <lv-input
           v-model="profileDetailsForm.dob"
+          :bottom-bar="true"
+          placeholder="Date of birth"
+          placeholder-color="rgba(0, 0, 0, 0.3)"
           type="date"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
       </div>
     </div>
@@ -180,12 +122,12 @@
     </div>
     <div class="row">
       <div class="form-element col-12">
-        <q-input
-          outlined
+        <lv-input
           v-model="profileDetailsForm.id_number"
-          lazy-rules
+          :bottom-bar="true"
+          placeholder="ID Number"
+          placeholder-color="rgba(0, 0, 0, 0.3)"
           mask="#############"
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
       </div>
     </div>
@@ -224,24 +166,21 @@
       </div> -->
     <div class="row">
       <div class="button-wrapper col-12">
-        <q-btn
-          unelevated
-          :no-caps="true"
+        <lv-button
           class="form-btn"
           label="Update Profile"
-          type="submit"
-          color="primary"
+          type="button"
+          @click="onSubmit"
         />
       </div>
     </div>
-  </q-form>
+  </form>
 </template>
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user.store";
 import { reactive, ref } from "vue";
 import AccountService from "@/services/account.service";
-import { Notify } from "quasar";
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -324,30 +263,10 @@ function onSubmit() {
 }
 
 function UpdateProfileSuccess() {
-  Notify.create({
-    message: "You have successfully updated your profile!",
-    color: "green",
-    icon: "bi-check-circle-fill",
-    position: "top",
-    actions: [
-      {
-        label: "Dismiss",
-        color: "white",
-        handler: () => {
-          /* ... */
-        },
-      },
-    ],
-  });
+  window.alert('You have successfully updated your profile!');
 }
 
 function UpdateProfileFailed(error_msg?: any) {
-  Notify.create({
-    message: error_msg ? error_msg : "Something went wrong. Please try again.",
-    color: "red",
-    icon: "bi-exclamation-circle-fill",
-    position: "top",
-    actions: [{ label: "Dismiss", color: "white", handler: () => {} }],
-  });
+  window.alert(error_msg ? error_msg : "Something went wrong. Please try again.");
 }
 </script>

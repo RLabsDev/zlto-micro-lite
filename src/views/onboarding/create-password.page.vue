@@ -77,7 +77,6 @@
           :type="isPwd ? 'password' : 'text'"
           label="Password *"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         >
           <template v-slot:prepend>
             <q-icon name="bi-lock" />
@@ -108,7 +107,6 @@
           :type="isConfirmPwd ? 'password' : 'text'"
           label="Confirm Password *"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         >
           <template v-slot:prepend>
             <q-icon name="bi-lock" />
@@ -149,7 +147,7 @@
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user.store";
-import { Notify } from 'quasar'
+// import { Notify } from 'quasar'
 
 let isPwd = ref(true);
 let isConfirmPwd = ref(true);
@@ -172,15 +170,15 @@ function onSubmit() {
     }
 
   } else {
-    Notify.create({
-          message: "Your passwords do not match!",
-          color: 'red',
-          position: 'top',
-          icon: 'bi-exclamation-circle-fill',
-          actions: [
-            { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
-          ]
-        })
+    // Notify.create({
+    //       message: "Your passwords do not match!",
+    //       color: 'red',
+    //       position: 'top',
+    //       icon: 'bi-exclamation-circle-fill',
+    //       actions: [
+    //         { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+    //       ]
+    //     })
   }
 }
 </script>

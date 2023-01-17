@@ -15,13 +15,12 @@
 </style>
 
 <template>
-  <q-layout view="hHh lpR fFf" style="min-height:auto">
-    <DefaultNav />
-    <q-page-container>
-      <slot />
-    </q-page-container>
-    <DefaultFooter />
-  </q-layout>
+  <DefaultNav />
+    <slot />
+    <br/>
+    <br/>
+    <br/>
+  <DefaultFooter />
 </template>
 
 <script lang="ts" setup>

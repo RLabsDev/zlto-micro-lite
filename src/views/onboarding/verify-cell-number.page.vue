@@ -58,30 +58,25 @@ a {
     </div>
     <div class="row">
       <div class="form-element offset-1 col-2">
-        <q-input outlined v-model="verifyCellNumberForm.digit_1"  lazy-rules  pattern="[0-9]*"  mask="#" :input-style="{ textAlign: 'center' }"
-          :rules="[(val) => (val && val.length > 0)]">
+        <q-input outlined v-model="verifyCellNumberForm.digit_1"  lazy-rules  pattern="[0-9]*"  mask="#" :input-style="{ textAlign: 'center' }" >
       </q-input>
       </div>
       <div class="form-element col-2">
-        <q-input outlined v-model="verifyCellNumberForm.digit_2" lazy-rules  pattern="[0-9]*"   mask="#" :input-style="{ textAlign: 'center' }"
-          :rules="[(val) => (val && val.length > 0)]">
+        <q-input outlined v-model="verifyCellNumberForm.digit_2" lazy-rules  pattern="[0-9]*"   mask="#" :input-style="{ textAlign: 'center' }" >
       </q-input>
       </div>
       <div class="form-element col-2">
-        <q-input outlined v-model="verifyCellNumberForm.digit_3" lazy-rules pattern="[0-9]*"    mask="#" :input-style="{ textAlign: 'center' }"
-          :rules="[(val) => (val && val.length > 0)]">
+        <q-input outlined v-model="verifyCellNumberForm.digit_3" lazy-rules pattern="[0-9]*"    mask="#" :input-style="{ textAlign: 'center' }" >
 
       </q-input>
       </div>
       <div class="form-element col-2"> 
-        <q-input outlined v-model="verifyCellNumberForm.digit_4"  lazy-rules pattern="[0-9]*"   mask="#" :input-style="{ textAlign: 'center' }"
-          :rules="[(val) => (val && val.length > 0)]">
+        <q-input outlined v-model="verifyCellNumberForm.digit_4"  lazy-rules pattern="[0-9]*"   mask="#" :input-style="{ textAlign: 'center' }" >
 
       </q-input>
       </div>
       <div class="form-element col-2">
-        <q-input outlined v-model="verifyCellNumberForm.digit_5"  lazy-rules  pattern="[0-9]*"   mask="#" :input-style="{ textAlign: 'center' }"
-          :rules="[(val) => (val && val.length > 0)]">
+        <q-input outlined v-model="verifyCellNumberForm.digit_5"  lazy-rules  pattern="[0-9]*"   mask="#" :input-style="{ textAlign: 'center' }" >
 
       </q-input>
       </div>
@@ -105,7 +100,7 @@ a {
   import { useRouter } from 'vue-router'
   import { useUserStore } from "@/stores/user.store";
   import MemberAccountService from '@/services/account.service'
-import { Notify } from 'quasar'
+// import { Notify } from 'quasar'
 
   const router = useRouter()
   const userStore = useUserStore();
@@ -164,27 +159,27 @@ import { Notify } from 'quasar'
   }
 
   function verifyCellNumberSuccess() {
-  Notify.create({
-          message: 'Verification SMS sent!',
-          color: 'green',
-          icon: 'bi-check-circle-fill',
-          position: 'top',
-          actions: [
-            { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
-          ]
-        })
+  // Notify.create({
+  //         message: 'Verification SMS sent!',
+  //         color: 'green',
+  //         icon: 'bi-check-circle-fill',
+  //         position: 'top',
+  //         actions: [
+  //           { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+  //         ]
+  //       })
   }
 
  function verifyCellNumberFailed(error_msg?: any) {
-  Notify.create({
-          message: error_msg ? error_msg : 'Something went wrong. Please try again.' ,
-          color: 'red',
-          icon: 'bi-exclamation-circle-fill',
-          position: 'top',
-          actions: [
-            { label: 'Dismiss', color: 'white', handler: () => { } }
-          ]
-        })
+  // Notify.create({
+  //         message: error_msg ? error_msg : 'Something went wrong. Please try again.' ,
+  //         color: 'red',
+  //         icon: 'bi-exclamation-circle-fill',
+  //         position: 'top',
+  //         actions: [
+  //           { label: 'Dismiss', color: 'white', handler: () => { } }
+  //         ]
+  //       })
  }
 
 </script>

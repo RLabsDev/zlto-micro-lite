@@ -77,7 +77,6 @@
           :type="isPwd ? 'password' : 'text'"
           label="Password *"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         >
           <template v-slot:prepend>
             <q-icon name="bi-lock" />
@@ -108,7 +107,6 @@
           :type="isConfirmPwd ? 'password' : 'text'"
           label="Confirm Password *"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         >
           <template v-slot:prepend>
             <q-icon name="bi-lock" />

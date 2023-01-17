@@ -227,7 +227,7 @@
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user.store";
-import { Notify } from 'quasar'
+// import { Notify } from 'quasar'
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -266,15 +266,15 @@ function onSubmit() {
 
   router.push({ name: "Agreement" });
   } else {
-    Notify.create({
-          message: 'Choose atleast 3 topics before you can continue.',
-          color: 'blue',
-          icon: 'bi-info-circle-fill',
-          position: 'top',
-          actions: [
-            { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
-          ]
-        })
+    // Notify.create({
+    //       message: 'Choose atleast 3 topics before you can continue.',
+    //       color: 'blue',
+    //       icon: 'bi-info-circle-fill',
+    //       position: 'top',
+    //       actions: [
+    //         { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+    //       ]
+    //     })
   }
 
 }

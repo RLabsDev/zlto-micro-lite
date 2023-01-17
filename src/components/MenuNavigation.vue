@@ -37,7 +37,7 @@ a {
 </style>
 
 <template>
-  <q-drawer
+  <!-- <q-drawer
     side="right"
     v-model="isDrawerOpen"
     overlay
@@ -101,7 +101,7 @@ a {
             </q-item></a> 
       </q-list>
     </q-scroll-area>
-  </q-drawer>
+  </q-drawer> -->
 </template>
 
 <script lang="ts" setup>

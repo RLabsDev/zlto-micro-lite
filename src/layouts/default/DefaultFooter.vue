@@ -29,9 +29,33 @@ i.q-icon {
 a {
   color: black;
 }
+
+.menu-row {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: white;
+  border-top: 1px solid lightgray;
+}
+
+.menu-btn {
+  display: block;
+  height: 4.5rem;
+  background-color: transparent;
+  width: 100%;
+  border-radius: 0;
+  color: gray;
+}
+
+.menu-btn > i {
+  font-size: 20px !important;
+}
+
 </style>
 <template>
-  <q-footer bordered class="bg-white text-primary">
+  <!-- <q-footer bordered class="bg-white text-primary">
     <q-tabs
       no-caps
       active-color="primary"
@@ -49,7 +73,47 @@ a {
       <q-tab name="saved" icon="bi-person" label="Profile"  @click="goToProfile()" />
       <q-tab name="more" icon="bi-list" label="More" @click="toggleDrawer()" />
     </q-tabs>
-  </q-footer>
+  </q-footer> -->
+
+  <div class="row menu-row">
+    <div class="col">
+      <lv-button
+        class="menu-btn"
+        icon="bi-house"
+        label="Home"
+        type="button"
+        @click="goHome()"
+      />
+    </div>
+    <div class="col">
+      <lv-button
+        class="menu-btn"
+        icon="bi-wallet2"
+        label="Wallet"
+        type="button"
+        @click="goToWallet()"
+      />
+    </div>
+    <div class="col">
+      <lv-button
+        class="menu-btn"
+        icon="bi-person"
+        label="Profile"
+        type="button"
+        @click="goToProfile()"
+      />
+    </div>
+    <div class="col">
+      <lv-button
+        class="menu-btn"
+        icon="bi-list"
+        label="More"
+        type="button"
+        @click="toggleDrawer()"
+      />
+    </div>
+  </div>
+
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";

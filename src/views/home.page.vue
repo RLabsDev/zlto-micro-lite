@@ -35,55 +35,107 @@
 
 .welcome-card {
   background-color: #fdb417;
+}
 
+.wallet-card {
+  width: 100%;
+  margin-bottom: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.task-card {
+  width: 100%;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.create-wallet-button {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.chevron-icon--white {
+  color: black;
+  background-color: white;
+}
+
+.chevron-icon--yellow {
+  background-color: #fdb417;
+}
+
+.chevron-icon > .lv-button{
+    font-size: 2rem;
+}
+
+.task-icon {
+  margin-right: 15px;
+  background-color: #fee9b9;
+  color: #fdb417;
+  width: 50px !important;
+  height: 50px;
+  border-radius: 50px;
 }
 
 </style>
 <template>
   <div class="row" v-if="!hasWallet">
-    <q-card class="welcome-card text-white">
-      <q-card-section>
-        <div class="text-h6">Welcome</div>
-        <div class="text-subtitle2">You are new to Zlto to start earning and spending you have to create a wallet.<br>If you would like to do that now click the "Create Wallet" button below.</div>
-      </q-card-section>
+    <LvCard
+      @click="CreateWallet()"
+      :shadowStyle="1"
+      padding="20px"
+      borderRadius="4px"
+      backgroundColor="#FDB417"
+      class="wallet-card"
+    >
 
-      <q-card-actions>
-        <q-btn flat  @click="CreateWallet()">Create Wallet</q-btn>
-      </q-card-actions>
-    </q-card>
+      <div class="text-h6">Welcome</div>
+      <div class="text-subtitle2">You are new to Zlto to start earning and spending you have to create a wallet.<br>If you would like to do that now click the "Create Wallet" button below.</div>
+
+      <div class="create-wallet-button" @click="CreateWallet()">Create Wallet</div>
+    </LvCard>
   </div>
   <div class="row" v-if="hasWallet">
-  <q-card class="welcome-card text-white" @click="viewWallet()">
-      <q-card-section>
-        <div class="row items-center no-wrap">
-          <div class="col">
-        <div class="text-h4">{{balance}}</div>
-        <div class="text-subtitle2">Zlto Wallet Balance</div>
-          </div>
-        <div class="col-auto">
-          <q-btn color="white" round flat icon="bi-chevron-right"  @click="goToMyTasks()"></q-btn>
-        </div>
-        </div>
-      </q-card-section>
-    </q-card>
-    </div>
-    <div class="row">
-      <q-card class="my-card">
-      <q-card-section>
-        <div class="row items-center no-wrap">
-          <div class="col-auto">
-            <q-avatar style="margin-right: 15px;background-color: #fee9b9; color: #fdb417;"  icon="bi-list-check"></q-avatar>
-          </div>
-          <div class="col">
-        <div class="text-h6">My Tasks</div>
-        <div class="text-subtitle2">View your tasks</div> 
+    <LvCard
+      @click="viewWallet()"
+      :shadowStyle="1"
+      padding="20px"
+      borderRadius="4px"
+      backgroundColor="#FDB417"
+      class="wallet-card"
+    >
+      <div class="row items-center no-wrap">
+        <div class="col">
+          <div class="text-h4">{{balance}}</div>
+          <div class="text-subtitle2">Zlto Wallet Balance</div>
         </div>
         <div class="col-auto">
-          <q-btn color="grey-7" round flat icon="bi-chevron-right"  @click="goToMyTasks()"></q-btn>
+          <LvButton color="white" class="chevron-icon--yellow" round flat icon="bi-chevron-right"  @click="viewWallet()"></LvButton>
         </div>
+      </div>
+    </LvCard>
+  </div>
+  <div class="row">
+    <LvCard
+      @click="goToMyTasks()"
+      :shadowStyle="1"
+      padding="20px"
+      borderRadius="4px"
+      class="task-card"
+    >
+      <div class="row items-center no-wrap">
+        <div class="col-auto">
+          <LvButton class="task-icon" icon="bi-list-check"></LvButton>
         </div>
-      </q-card-section>
-    </q-card>
+        <div class="col">
+          <div class="text-h6">My Tasks</div>
+          <div class="text-subtitle2">View your tasks</div> 
+        </div>
+        <div class="col-auto">
+          <LvButton color="white" class="chevron-icon--white" round flat icon="bi-chevron-right"  @click="goToMyTasks()"></LvButton>
+        </div>
+      </div>
+    </LvCard>
 
       <!-- <q-card class="my-card">
       <q-card-section>
@@ -118,14 +170,13 @@
         </div>
       </q-card-section>
     </q-card> -->
-    </div>
+  </div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/user.store";
 import WalletService from "@/services/wallet.service";
 import AccountService from "@/services/account.service";
-import { Notify } from 'quasar'
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -134,6 +185,7 @@ const walletService = new WalletService();
 const accountService = new AccountService();
 let hasWallet = ref(true);
 let balance = ref(0);
+
 onMounted(() => {
   if (userStore.currentAccount.wallet_id === 'None') {
     console.log(userStore.wallet, 'kjgkhb')
@@ -142,7 +194,6 @@ onMounted(() => {
     balance.value = userStore.wallet.zlto_balance;
   }
 });
-
 
 function CreateWallet() {
   const walletName = "Zlto Wallet";
@@ -183,27 +234,27 @@ function CreateWallet() {
 }
 
 function CreateWalletSuccess() {
-  Notify.create({
-    message: 'You have successfully created a wallet!',
-    color: 'green',
-    icon: 'bi-check-circle-fill',
-    position: 'top',
-    actions: [
-      { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
-    ]
-  })
+  // Notify.create({
+  //   message: 'You have successfully created a wallet!',
+  //   color: 'green',
+  //   icon: 'bi-check-circle-fill',
+  //   position: 'top',
+  //   actions: [
+  //     { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+  //   ]
+  // })
 }
 
 function CreateWalletFailed(error_msg?: any) {
-Notify.create({
-        message: error_msg ? error_msg : 'Something went wrong. Please try again.' ,
-        color: 'red',
-        icon: 'bi-exclamation-circle-fill',
-        position: 'top',
-        actions: [
-          { label: 'Dismiss', color: 'white', handler: () => { } }
-        ]
-      })
+// Notify.create({
+//         message: error_msg ? error_msg : 'Something went wrong. Please try again.' ,
+//         color: 'red',
+//         icon: 'bi-exclamation-circle-fill',
+//         position: 'top',
+//         actions: [
+//           { label: 'Dismiss', color: 'white', handler: () => { } }
+//         ]
+//       })
 }
 
 function goToMyTasks() {

@@ -26,6 +26,11 @@ a,
   }
 }
 
+.lv-button:enabled:hover {
+  background-color: inherit;
+  color: gray;
+}
+
 /* @media (min-width: 1024px) {
   body {
     display: flex;

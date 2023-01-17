@@ -6,6 +6,15 @@
   border-radius: 15px;
   border-style: dashed;
 }
+.redeem-btn {
+  margin-top: 20px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #fdb417;
+  border-color: #fdb417;
+  width: 100%;
+  height: 47px;
+}
 </style>
 <template>
   <bread-crumb
@@ -13,10 +22,13 @@
     :backTo="`Wallet / My Vouchers / ${voucherData?.voucher_name}`"
   />
   <div class="row">
-    <q-card class="my-card" flat bordered>
-      <q-img src="https://cdn.quasar.dev/img/parallax2.jpg"> </q-img>
-
-      <q-card-section>
+    <LvCard
+      :shadowStyle="1"
+      padding="20px"
+      borderRadius="4px"
+      class="card-item"
+    >
+      <div class="content">
         <div class="text-caption text-grey">
           {{ voucherData?.date_created }}
         </div>
@@ -35,18 +47,16 @@
             </div>
           </div>
         </div>
-      </q-card-section>
-      <q-card-actions>
-        <q-btn
-        v-if="voucherData?.voucher_state === 'new'"
-          unelevated
-          color="primary"
-          class="full-width"
-          label="Redeem"
-          @click="redeemVoucher()"
-        />
-      </q-card-actions>
-    </q-card>
+        <div class="row">
+          <lv-button
+            class="redeem-btn"
+            label="Redeem"
+            type="button"
+            @click="redeemVoucher()"
+          />
+        </div>
+      </div>
+    </LvCard>
   </div>
 </template>
 <script setup lang="ts">
@@ -54,7 +64,6 @@ import type { Task } from "@/services/models/task.models";
 import WalletService from "@/services/wallet.service";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
-import { Notify } from "quasar";
 import type { Voucher } from "@/services/models/wallet.models";
 
 const props = defineProps({
@@ -104,30 +113,10 @@ function redeemVoucher() {
 }
 
 function redeemVoucherSuccess() {
-  Notify.create({
-    message: "Voucher Successfully Redeemed!",
-    color: "green",
-    icon: "bi-check-circle-fill",
-    position: "top",
-    actions: [
-      {
-        label: "Dismiss",
-        color: "white",
-        handler: () => {
-          /* ... */
-        },
-      },
-    ],
-  });
+  window.alert("Voucher Successfully Redeemed!");
 }
 
 function redeemVoucherFailure(error_msg?: any) {
-  Notify.create({
-    message: error_msg ? error_msg : "Something went wrong. Please try again.",
-    color: "red",
-    icon: "bi-exclamation-circle-fill",
-    position: "top",
-    actions: [{ label: "Dismiss", color: "white", handler: () => {} }],
-  });
+  window.alert("Voucher Successfully Redeemed!");
 }
 </script>

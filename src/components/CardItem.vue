@@ -27,27 +27,31 @@ h4 {
   margin: 15px 0 0 0;
   background: #707070;
 }
+
+.card-item {
+  height: 100px;
+}
 </style>
 <template>
-  <q-card class="Card" flat>
-    <q-card-section horizontal>
-      <q-card-section class="col-5 image-section flex flex-center">
-        <q-img class="rounded-borders" :src="image" />
-      </q-card-section>
-      <q-card-section class="content-container">
+  <LvCard
+    :shadowStyle="1"
+    padding="20px"
+    borderRadius="4px"
+    class="card-item"
+  >
+    <div class="row">
+      <div class="col">
+        <h2 class=""> 🎁 </h2>
+      </div>
+      <div class="col">
         <div class="content">
           <h4 class="">{{ title }}</h4>
           <h4 class="">{{ description }}</h4>
           <p class="text-caption text-grey">{{ caption }}</p>
         </div>
-      </q-card-section>
-
-      <q-card-actions vertical class="justify-around">
-        <q-icon name="bi-chevron-right" color="grey-7" size="1.5rem" />
-      </q-card-actions>
-    </q-card-section>
-    <q-separator inset class="seperator" />
-  </q-card>
+      </div>
+    </div>
+  </LvCard>
 </template>
 
 <script lang="ts">

@@ -109,7 +109,7 @@ import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user.store";
 import MemberAccountService from '@/services/account.service'
-import { Notify } from 'quasar'
+// import { Notify } from 'quasar'
 
 
 
@@ -203,27 +203,27 @@ memberAccountService.createMemberAccount(
   );
 
  function RegisterSuccess() {
-  Notify.create({
-          message: 'You have successfully registerd!',
-          color: 'green',
-          icon: 'bi-check-circle-fill',
-          position: 'top',
-          actions: [
-            { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
-          ]
-        })
+  // Notify.create({
+  //         message: 'You have successfully registerd!',
+  //         color: 'green',
+  //         icon: 'bi-check-circle-fill',
+  //         position: 'top',
+  //         actions: [
+  //           { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+  //         ]
+  //       })
   }
 
  function RegisterFailed(error_msg?: any) {
-  Notify.create({
-          message: error_msg ? error_msg : 'Something went wrong. Please try again.' ,
-          color: 'red',
-          icon: 'bi-exclamation-circle-fill',
-          position: 'top',
-          actions: [
-            { label: 'Dismiss', color: 'white', handler: () => { } }
-          ]
-        })
+  // Notify.create({
+  //         message: error_msg ? error_msg : 'Something went wrong. Please try again.' ,
+  //         color: 'red',
+  //         icon: 'bi-exclamation-circle-fill',
+  //         position: 'top',
+  //         actions: [
+  //           { label: 'Dismiss', color: 'white', handler: () => { } }
+  //         ]
+  //       })
  }
  
 }

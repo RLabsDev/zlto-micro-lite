@@ -56,7 +56,6 @@
           v-model="demographicsForm.dob"
           type="date"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
       </div>
     </div>
@@ -82,7 +81,6 @@
           label="ID Number *"
           lazy-rules
           mask="#############"
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
       </div>
     </div>
@@ -126,8 +124,7 @@
         <q-select outlined v-model="demographicsForm.country_of_residence" :options="countries" label="Country *"/>
       </div>
       <div class="form-element col-6">
-        <q-input outlined v-model="demographicsForm.postal_code"  label="Postal Code *" lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"  mask="####">
+        <q-input outlined v-model="demographicsForm.postal_code"  label="Postal Code *" lazy-rules >
       </q-input>
       </div>
     </div>

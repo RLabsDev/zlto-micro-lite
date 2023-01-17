@@ -3,9 +3,22 @@ import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import { Quasar, Notify } from "quasar";
+
+// @ts-ignore
+import LvInput from "lightvue/input";
+// @ts-ignore
+import LvTextarea from "lightvue/textarea";
+// @ts-ignore
+import LvButton from "lightvue/button";
+// @ts-ignore
+import LvCard from "lightvue/card";
+// @ts-ignore
+import LvBadge from "lightvue/badge";
+
 import UUID from "vue3-uuid";
 
+// @ts-ignore
+import { Quasar, Notify } from "quasar";
 // Import icon libraries
 import "@quasar/extras/material-icons/material-icons.css";
 
@@ -33,6 +46,13 @@ app
   .component("BreadCrumb", Breadcrumb)
   .component("LayoutDefault", Default)
   .component("LayoutOnboarding", Onboarding);
+
+app
+  .component('LvInput', LvInput)
+  .component('LvTextarea', LvTextarea)
+  .component('LvButton', LvButton)
+  .component('LvCard', LvCard)
+  .component('LvBadge', LvBadge)
 
 app.use(Quasar, {
   plugins: {

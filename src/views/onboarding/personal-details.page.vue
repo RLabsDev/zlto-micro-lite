@@ -41,7 +41,7 @@
     <div class="row">
       <div class="form-element col-6">
         <q-input outlined v-model="personalDetailsForm.name"  label="Name *" lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']">
+          >
         <template v-slot:prepend>
           <q-icon name="bi-person" />
         </template>
@@ -49,7 +49,7 @@
       </div>
       <div class="form-element col-6">
         <q-input outlined v-model="personalDetailsForm.surname"  label="Surname *" lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']">
+          >
         <template v-slot:prepend>
           <q-icon name="bi-person" />
         </template>
@@ -365,7 +365,7 @@
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user.store";
-import { Notify } from "quasar";
+// import { Notify } from "quasar";
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -400,14 +400,14 @@ function onSubmit() {
 }
 
 function enterEmailOrCellNumber() {
-  Notify.create({
-    message: 'Please enter a cell number or email address to proceed.' ,
-        color: 'red',
-        icon: 'bi-exclamation-circle-fill',
-        position: 'top',
-        actions: [
-          { label: 'Dismiss', color: 'white', handler: () => { } }
-        ]
-  }) 
+  // Notify.create({
+  //   message: 'Please enter a cell number or email address to proceed.' ,
+  //       color: 'red',
+  //       icon: 'bi-exclamation-circle-fill',
+  //       position: 'top',
+  //       actions: [
+  //         { label: 'Dismiss', color: 'white', handler: () => { } }
+  //       ]
+  // }) 
   }
 </script>
