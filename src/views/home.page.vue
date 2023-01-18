@@ -104,7 +104,7 @@
       backgroundColor="#FDB417"
       class="wallet-card"
     >
-      <div class="row items-center no-wrap">
+      <div class="row flex items-center no-wrap">
         <div class="col">
           <div class="text-h4">{{balance}}</div>
           <div class="text-subtitle2">Zlto Wallet Balance</div>
@@ -123,7 +123,7 @@
       borderRadius="4px"
       class="task-card"
     >
-      <div class="row items-center no-wrap">
+      <div class="row flex items-center no-wrap">
         <div class="col-auto">
           <LvButton class="task-icon" icon="bi-list-check"></LvButton>
         </div>

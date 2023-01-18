@@ -31,6 +31,7 @@ a {
 }
 
 .menu-row {
+  display: flex;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -97,6 +98,15 @@ a {
     <div class="col">
       <lv-button
         class="menu-btn"
+        icon="bi-pencil"
+        label="Tasks"
+        type="button"
+        @click="goToTasks()"
+      />
+    </div>
+    <div class="col">
+      <lv-button
+        class="menu-btn"
         icon="bi-person"
         label="Profile"
         type="button"
@@ -136,6 +146,10 @@ function LogOut() {
 
 function goToMyVouchers() {
   router.push({ name: "ViewAllUserVouchers" });
+}
+
+function goToTasks() {
+  router.push({ name: "ViewAllUserTasks" });
 }
 
 function goToWallet() {

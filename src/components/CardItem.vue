@@ -29,7 +29,8 @@ h4 {
 }
 
 .card-item {
-  height: 100px;
+  min-height: 100px;
+  height: fit-content;
 }
 </style>
 <template>

@@ -14,6 +14,8 @@ import LvButton from "lightvue/button";
 import LvCard from "lightvue/card";
 // @ts-ignore
 import LvBadge from "lightvue/badge";
+// @ts-ignore
+import LvCollapsible from 'lightvue/collapsible';
 
 import UUID from "vue3-uuid";
 
@@ -53,6 +55,7 @@ app
   .component('LvButton', LvButton)
   .component('LvCard', LvCard)
   .component('LvBadge', LvBadge)
+  .component('LvCollapsible', LvCollapsible)
 
 app.use(Quasar, {
   plugins: {

@@ -26,9 +26,66 @@ a,
   }
 }
 
+/* .row {
+  display: flex;
+} */
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
+}
+
 .lv-button:enabled:hover {
   background-color: inherit;
   color: gray;
+}
+
+
+.collapsible_catgory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 16px 0px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.collapsible__category-items {
+  padding: 0px 16px 8px;
+  margin-left: 8px;
+  background: #f7fcfc;
+}
+.nav-list__item-line {
+  width: 20px;
+  border-bottom: 1px dotted #566779;
+}
+.nav-list__item-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #566779;
+}
+.nav-list__category-item {
+  display: flex;
+  align-items: center;
+  border-left: 1px dotted #57687a;
+  padding: 8px 0px;
+  text-indent: 10px;
+}
+.collapisible--answer {
+  padding: 4px 15px 10px 22px;
+  /* margin-left: 18px; */
+  background: #f7fcfc;
+  border-left: 3px solid #38b2ac;
+}
+.accordian-wrapper {
+  width: 100%;
 }
 
 /* @media (min-width: 1024px) {
