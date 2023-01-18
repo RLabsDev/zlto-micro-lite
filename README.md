@@ -1,6 +1,9 @@
 # zlto-micro-lite
 
-Open Source Version of Zlto Member App, utilizing the new Zlto Microservice architecture
+Open Source Version of Zlto Member App, utilizing the new Zlto Microservice architecture.
+
+Compressed - 78kb
+Uncompressed - 246kb
 
 This template should help get you started developing with Vue 3 in Vite.
 
